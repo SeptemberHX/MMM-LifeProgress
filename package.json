@@ -1,0 +1,23 @@
+{
+  "name": "MMM-LifeProgress",
+  "version": "1.0",
+  "description": "Life Progress",
+  "main": "MMM-LifeProgress.js",
+  "repository": {
+    "type": "git",
+    "url": "git+SeptemberHX/MMM-LifeProgress"
+  },
+  "keywords": [
+    "MagicMirror",
+    "calendar"
+  ],
+  "author": "SeptemberHX <september_hx@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SeptemberHX/MMM-LifeProgress/issues"
+  },
+  "homepage": "https://github.com/SeptemberHX/MMM-LifeProgress#README.md",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
