@@ -5,3 +5,8 @@
 .life-progress-text {
     color: white;
 }
+
+.life-progress-summary {
+    font-size: xx-large;
+    color: orangered;
+}

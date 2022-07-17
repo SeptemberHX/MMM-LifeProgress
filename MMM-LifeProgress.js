@@ -48,7 +48,7 @@ Module.register("MMM-LifeProgress", {
 
         if (this.today) {
             var textLabel = document.createElement('div');
-            textLabel.classList.add('life-progress-text')
+            textLabel.classList.add('life-progress-text', 'life-progress-summary')
             if (this.today.holiday) {
                 textLabel.innerText = `${this.today.holiday.name}，休息！`
             } else {
