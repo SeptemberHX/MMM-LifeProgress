@@ -45,8 +45,7 @@ Module.register("MMM-LifeProgress", {
 
         var pDiv = document.createElement("div")
         pDiv.classList.add('progress')
-        pDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
-        progressDiv.appendChild(pDiv)
+        progressDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
         row.appendChild(progressDiv)
 
         return row
