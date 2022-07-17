@@ -36,14 +36,17 @@ Module.register("MMM-LifeProgress", {
         wrapper.classList.add('container', 'life-progress-container')
         var m = moment();
 
-        if (!this.today) {
+        if (!this.today || this.holidayRequestCount >= 30) {
             fetch(`http://timor.tech/api/holiday/info/${m.year()}-${m.month() + 1}-${m.date()}`, requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     const holidayResult = JSON.parse(result)
                     this.today = holidayResult
+                    this.holidayRequestCount = 1
                 })
                 .catch(error => console.log('error', error));
+        } else {
+            this.holidayRequestCount += 1
         }
 
         if (this.today) {
