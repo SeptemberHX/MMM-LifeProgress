@@ -64,9 +64,16 @@ Module.register("MMM-LifeProgress", {
             wrapper.appendChild(textLabel)
         }
 
+        m = moment()
         const dayPercent = (m.valueOf() - m.startOf('day').valueOf()) * 100 / (24 * 60 * 60 * 1000)
+
+        m = moment()
         const weekPercent = (m.valueOf() - m.startOf('isoweek').valueOf()) * 100 / (7 * 24 * 60 * 60 * 1000)
+
+        m = moment()
         const monthPercent = (m.valueOf() - m.startOf('month').valueOf()) * 100 / (m.endOf('month').valueOf() - m.startOf('month').valueOf())
+
+        m = moment()
         const yearPercent = (m.valueOf() - m.startOf('year').valueOf()) * 100 / (m.endOf('year').valueOf() - m.startOf('year').valueOf())
 
         wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', dayPercent.toFixed(1)))
