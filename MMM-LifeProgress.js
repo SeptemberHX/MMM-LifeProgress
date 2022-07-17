@@ -1,8 +1,16 @@
 // import moment from "moment";
 
+var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+};
+
 Module.register("MMM-LifeProgress", {
     // Module config defaults.
     defaults: {},
+
+    today: null,
+    holidayRequestCount: 0,
 
     // Define required scripts.
     getScripts: function () {
@@ -26,9 +34,34 @@ Module.register("MMM-LifeProgress", {
     getDom: function() {
         var wrapper = document.createElement("div")
         wrapper.classList.add('container', 'life-progress-container')
-
         var m = moment();
-        const dayPercent = (m.valueOf() - m.startOf('hour').valueOf()) * 100 / (60 * 60 * 1000)
+
+        if (!this.today) {
+            fetch(`http://timor.tech/api/holiday/info/${m.year()}-${m.month()}-${m.date()}`, requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    const holidayResult = JSON.parse(result)
+                    this.today = holidayResult
+                })
+                .catch(error => console.log('error', error));
+        }
+
+        if (this.today) {
+            var textLabel = document.createElement('div');
+            textLabel.classList.add('life-progress-text')
+            if (this.today.holiday) {
+                textLabel.innerText = `${this.today.holiday.name}，休息！`
+            } else {
+                if (this.today.type.type === 1) {
+                    textLabel.innerText = `周末，休息！`
+                } else {
+                    textLabel.innerText = `工作日，上班！`
+                }
+            }
+            wrapper.appendChild(textLabel)
+        }
+
+        const dayPercent = (m.valueOf() - m.startOf('hour').valueOf()) * 100 / (24 * 60 * 60 * 1000)
         const weekPercent = (m.valueOf() - m.startOf('isoweek').valueOf()) * 100 / (7 * 24 * 60 * 60 * 1000)
         const monthPercent = (m.valueOf() - m.startOf('month').valueOf()) * 100 / (m.endOf('month').valueOf() - m.startOf('month').valueOf())
         const yearPercent = (m.valueOf() - m.startOf('year').valueOf()) * 100 / (m.endOf('year').valueOf() - m.startOf('year').valueOf())
