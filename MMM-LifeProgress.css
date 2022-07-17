@@ -1,4 +1,7 @@
 .life-progress-container {
     width: 250px;
+}
+
+.life-progress-text {
     color: white;
 }

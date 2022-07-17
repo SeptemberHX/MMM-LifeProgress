@@ -36,7 +36,7 @@ Module.register("MMM-LifeProgress", {
         row.classList.add('row', 'align-items-center')
 
         var textDiv = document.createElement("div")
-        textDiv.classList.add('col', 'col-sm-auto')
+        textDiv.classList.add('col', 'col-sm-auto', 'life-progress-text')
         textDiv.textContent = text
         row.appendChild(textDiv)
 
