@@ -33,7 +33,7 @@ Module.register("MMM-LifeProgress", {
 
     createProgressRow: function (text, type, color, value) {
         var row = document.createElement("div")
-        row.classList.add('col', 'align-items-center')
+        row.classList.add('row', 'align-items-center')
 
         var textDiv = document.createElement("div")
         textDiv.classList.add('col', 'col-sm-auto')
