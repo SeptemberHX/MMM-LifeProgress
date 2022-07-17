@@ -1,3 +1,5 @@
+import moment from "moment";
+
 Module.register("MMM-LifeProgress", {
     // Module config defaults.
     defaults: {},
@@ -24,10 +26,14 @@ Module.register("MMM-LifeProgress", {
     getDom: function() {
         var wrapper = document.createElement("div")
         wrapper.classList.add('container', 'life-progress-container')
-        wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', 10))
-        wrapper.appendChild(this.createProgressRow('本周：', 'day', 'bg-info', 20))
-        wrapper.appendChild(this.createProgressRow('本月：', 'day', 'bg-warning', 30))
-        wrapper.appendChild(this.createProgressRow('本年：', 'day', 'bg-danger', 40))
+
+        var m = moment();
+        const dayPercent = (m.valueOf() - m.startOf('hour').fromNow().valueOf()) * 100 / (60 * 60 * 1000)
+
+        wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', dayPercent))
+        wrapper.appendChild(this.createProgressRow('本周：', 'week', 'bg-info', 20))
+        wrapper.appendChild(this.createProgressRow('本月：', 'month', 'bg-warning', 30))
+        wrapper.appendChild(this.createProgressRow('本年：', 'year', 'bg-danger', 40))
         return wrapper
     },
 
@@ -45,7 +51,7 @@ Module.register("MMM-LifeProgress", {
 
         var pDiv = document.createElement("div")
         pDiv.classList.add('progress')
-        pDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
+        pDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%">${value}%</div>`
         progressDiv.appendChild(pDiv)
         row.appendChild(progressDiv)
 
