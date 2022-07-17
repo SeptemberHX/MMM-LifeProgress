@@ -68,7 +68,7 @@ Module.register("MMM-LifeProgress", {
                 link.rel  = 'stylesheet'
                 link.type = 'text/css'
                 link.href = c.href
-                link.media = 'all's
+                link.media = 'all'
                 head.appendChild(link)
             }
         })
