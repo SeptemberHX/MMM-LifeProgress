@@ -33,20 +33,22 @@ Module.register("MMM-LifeProgress", {
 
     createProgressRow: function (text, type, color, value) {
         var row = document.createElement("div")
-        row.classList.add('row', 'align-items-center')
-
-        var textDiv = document.createElement("div")
-        textDiv.classList.add('col', 'col-sm-auto', 'life-progress-text')
-        textDiv.textContent = text
-        row.appendChild(textDiv)
-
-        var progressDiv = document.createElement("div")
-        progressDiv.classList.add('col')
-
-        var pDiv = document.createElement("div")
-        pDiv.classList.add('progress')
-        progressDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
-        row.appendChild(progressDiv)
+        row.innerText = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
+        // row.classList.add('row', 'align-items-center')
+        //
+        // var textDiv = document.createElement("div")
+        // textDiv.classList.add('col', 'col-sm-auto', 'life-progress-text')
+        // textDiv.textContent = text
+        // row.appendChild(textDiv)
+        //
+        // var progressDiv = document.createElement("div")
+        // progressDiv.classList.add('col')
+        //
+        // var pDiv = document.createElement("div")
+        // pDiv.classList.add('progress')
+        // pDiv.innerHTML = `<div class="progress-bar progress-bar-striped progress-bar-animated progress-bar-${type} ${color}" role="progressbar" aria-valuenow="${value}" aria-valuemin="0" aria-valuemax="100" style="width: ${value}%"></div>`
+        // progressDiv.appendChild(pDiv)
+        // row.appendChild(progressDiv)
 
         return row
     },
