@@ -9,7 +9,7 @@ Module.register("MMM-LifeProgress", {
 
     // Define styles.
     getStyles: function () {
-        return ["MMM-LifeProgress.css"]
+        return ["MMM-LifeProgress.css", "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"]
     },
 
     start: function() {
@@ -68,7 +68,7 @@ Module.register("MMM-LifeProgress", {
                 link.rel  = 'stylesheet'
                 link.type = 'text/css'
                 link.href = c.href
-                link.media = 'all'
+                link.media = 'all's
                 head.appendChild(link)
             }
         })
