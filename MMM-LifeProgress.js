@@ -28,7 +28,8 @@ Module.register("MMM-LifeProgress", {
         wrapper.classList.add('container', 'life-progress-container')
 
         var m = moment();
-        const dayPercent = (m.valueOf() - m.startOf('hour').fromNow().valueOf()) * 100 / (60 * 60 * 1000)
+        const dayPercent = (m.valueOf() - m.startOf('hour').valueOf()) * 100 / (60 * 60 * 1000)
+        const weekPercent = 
 
         wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', dayPercent))
         wrapper.appendChild(this.createProgressRow('本周：', 'week', 'bg-info', 20))
