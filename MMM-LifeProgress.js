@@ -37,7 +37,7 @@ Module.register("MMM-LifeProgress", {
         var m = moment();
 
         if (!this.today) {
-            fetch(`http://timor.tech/api/holiday/info/${m.year()}-${m.month()}-${m.date()}`, requestOptions)
+            fetch(`http://timor.tech/api/holiday/info/${m.year()}-${m.month() + 1}-${m.date()}`, requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     const holidayResult = JSON.parse(result)
@@ -61,7 +61,7 @@ Module.register("MMM-LifeProgress", {
             wrapper.appendChild(textLabel)
         }
 
-        const dayPercent = (m.valueOf() - m.startOf('hour').valueOf()) * 100 / (24 * 60 * 60 * 1000)
+        const dayPercent = (m.valueOf() - m.startOf('day').valueOf()) * 100 / (24 * 60 * 60 * 1000)
         const weekPercent = (m.valueOf() - m.startOf('isoweek').valueOf()) * 100 / (7 * 24 * 60 * 60 * 1000)
         const monthPercent = (m.valueOf() - m.startOf('month').valueOf()) * 100 / (m.endOf('month').valueOf() - m.startOf('month').valueOf())
         const yearPercent = (m.valueOf() - m.startOf('year').valueOf()) * 100 / (m.endOf('year').valueOf() - m.startOf('year').valueOf())
