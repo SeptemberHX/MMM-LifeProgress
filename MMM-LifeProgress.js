@@ -29,12 +29,14 @@ Module.register("MMM-LifeProgress", {
 
         var m = moment();
         const dayPercent = (m.valueOf() - m.startOf('hour').valueOf()) * 100 / (60 * 60 * 1000)
-        const weekPercent =
+        const weekPercent = (m.valueOf() - m.startOf('isoweek').valueOf()) * 100 / (7 * 24 * 60 * 60 * 1000)
+        const monthPercent = (m.valueOf() - m.startOf('month').valueOf()) * 100 / (m.endOf('month').valueOf() - m.startOf('month').valueOf())
+        const yearPercent = (m.valueOf() - m.startOf('year').valueOf()) * 100 / (m.endOf('year').valueOf() - m.startOf('year').valueOf())
 
-        wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', dayPercent))
-        wrapper.appendChild(this.createProgressRow('本周：', 'week', 'bg-info', 20))
-        wrapper.appendChild(this.createProgressRow('本月：', 'month', 'bg-warning', 30))
-        wrapper.appendChild(this.createProgressRow('本年：', 'year', 'bg-danger', 40))
+        wrapper.appendChild(this.createProgressRow('今天：', 'day', 'bg-success', dayPercent.toFixed(1)))
+        wrapper.appendChild(this.createProgressRow('本周：', 'week', 'bg-info', weekPercent.toFixed(1)))
+        wrapper.appendChild(this.createProgressRow('本月：', 'month', 'bg-warning', monthPercent.toFixed(1)))
+        wrapper.appendChild(this.createProgressRow('本年：', 'year', 'bg-danger', yearPercent.toFixed(1)))
         return wrapper
     },
 
